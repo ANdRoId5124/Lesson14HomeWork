@@ -6,7 +6,9 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         ArrayList<File> contracts = new ArrayList<>();
         Set<String> chekedDocs = new HashSet<>();
-        Map<Integer, String> sortedDocs = new HashMap<>();
+        Map<Set, String> sortedDocs = new HashMap<>();
+        BufferedWriter report = new BufferedWriter(new FileWriter("ChekedDocs.txt"));
+        String coment = ": Wrong length or File don't start with docnum or contract";
         while (true) {
             System.out.println("Введите путь и название файла: ");
             String paths = scanner.next();
@@ -34,16 +36,24 @@ public class Main {
                 if (documnets[j].length() == 15 && (documnets[j].startsWith("docnum") || documnets[j].startsWith("contract"))) {
                     chekedDocs.add(documnets[j] + "\n");
                 } else {
-                    chekedDocs.add(documnets[j] + " :" + "Wrong length or File don't start with docnum or contract" + "\n");
+                    chekedDocs.add(documnets[j] + coment + "\n");
                 }
 
             }
 
 
+        }
+
+        for(String docums : chekedDocs){
+            sortedDocs.put(chekedDocs, coment);
 
         }
 
-        System.out.println(chekedDocs);
+        for (int k = 0; k < sortedDocs.size(); k++){
+            report.write(sortedDocs.get(k));
+        }
+
+        report.close();
     }
 
 
