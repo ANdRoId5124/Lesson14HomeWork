@@ -1,0 +1,5 @@
+docnumvgconlkjh : valid document
+document : not valid document, length not == 15 or doc do not start with docnum or contract
+documentation : not valid document, length not == 15 or doc do not start with docnum or contract
+contract1234567 : valid document
+contractjhdocum : valid document
